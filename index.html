@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Proof">
+<title>Proof</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <div class="hello" id="hello">Good morning</div>
+    <div class="date" id="date"></div>
+  </div>
+  <div class="ring" id="ring" title="Done this week"><svg viewBox="0 0 36 36"><circle class="r-bg" cx="18" cy="18" r="15.5"/><circle class="r-fg" id="ring-fg" cx="18" cy="18" r="15.5"/></svg><span id="ring-n">0</span></div>
+</header>
+
+<main>
+<!-- TODAY -->
+<section class="view on" id="v-today">
+  <div class="card hero" id="today-card"></div>
+  <div class="nudge" id="nudge" hidden></div>
+  <h2 class="lbl">This week</h2>
+  <div class="dots" id="dots"></div>
+  <p class="hint">Small on purpose. Each tick is proof that what you do changes what happens.</p>
+</section>
+
+<!-- CATCH -->
+<section class="view" id="v-catch">
+  <div class="card">
+    <h1>Caught an “I can’t”?</h1>
+    <p class="sub">Write the thought down, then answer three short questions about it.</p>
+    <label class="f">The thought
+      <textarea id="c-thought" rows="2" placeholder="e.g. I’m just not good at system design"></textarea></label>
+    <div class="q"><span class="qt">Personal</span><label class="f">Is it really all about me? What else played a part?
+      <textarea id="c-p" rows="2" placeholder="The prep material was poor, I had 2 days"></textarea></label></div>
+    <div class="q"><span class="qt">Permanent</span><label class="f">Will it really always be like this? What could change?
+      <textarea id="c-t" rows="2" placeholder="I can practise one topic a week"></textarea></label></div>
+    <div class="q"><span class="qt">Pervasive</span><label class="f">Does it really cover everything? Where am I doing fine?
+      <textarea id="c-a" rows="2" placeholder="I finish real work at my job every week"></textarea></label></div>
+    <label class="f">So a fairer version is…
+      <textarea id="c-new" rows="2" placeholder="System design is new to me, and I’m learning it step by step"></textarea></label>
+    <button class="btn primary wide" id="c-save">Save to my wall</button>
+  </div>
+</section>
+
+<!-- WALL -->
+<section class="view" id="v-wall">
+  <div class="wall-h">
+    <h1>Evidence wall</h1>
+    <div class="seg" id="wall-seg"><button class="on" data-f="all">All</button><button data-f="win">Wins</button><button data-f="ref">Reframes</button></div>
+  </div>
+  <p class="sub" id="wall-sum"></p>
+  <ul class="wall" id="wall"></ul>
+</section>
+
+<!-- WEEK -->
+<section class="view" id="v-week">
+  <div class="card">
+    <h1>Tried vs done</h1>
+    <p class="sub">The last 8 weeks. You’re looking for a trend, not perfect weeks.</p>
+    <div class="chart" id="chart"></div>
+    <div class="legend"><span><i class="k tried"></i>Tried</span><span><i class="k done"></i>Done</span></div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="card">
+    <h2 class="lbl">Your data</h2>
+    <p class="sub">Everything stays on this device. Save a backup now and then.</p>
+    <div class="row"><button class="btn" id="exp">Export backup</button><label class="btn">Import<input type="file" id="imp" accept="application/json" hidden></label></div>
+  </div>
+</section>
+</main>
+
+<nav class="tabs">
+  <button class="on" data-v="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.2l2.4 2.4 4.6-5"/></svg>Today</button>
+  <button data-v="catch"><svg viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4z"/></svg>Catch</button>
+  <button data-v="wall"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Wall</button>
+  <button data-v="week"><svg viewBox="0 0 24 24"><path d="M6 19V11M12 19V6M18 19v-5"/></svg>Week</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
